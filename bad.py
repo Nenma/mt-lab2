@@ -49,10 +49,10 @@ if __name__ == '__main__':
 
     txt = open('text.txt', 'r').read()
     prev_lang = 'eng_Latn'
-    next_lang = 'eng_Latn'  # placeholder
+    next_lang = str(input('Enter target language: '))
     while(next_lang != 'stop'):
-        next_lang = str(input('Enter target language: '))
         translation = client.translation(txt, prev_lang, next_lang)
         translation = translation['translation_text']
         print(translation)
         prev_lang = next_lang
+        next_lang = str(input('Enter target language: '))
