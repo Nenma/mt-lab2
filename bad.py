@@ -54,5 +54,6 @@ if __name__ == '__main__':
         translation = client.translation(txt, prev_lang, next_lang)
         translation = translation['translation_text']
         print(translation)
+        txt = translation
         prev_lang = next_lang
         next_lang = str(input('Enter target language: '))
