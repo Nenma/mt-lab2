@@ -1,6 +1,10 @@
 # Machine Translation - Laboratory 2
 
+## Task description
+
 Implement something similar to [Bad Translator](https://workspace.google.com/marketplace/app/bad_translator/306615442162), using freely available APIs for existing MT systems (such as Bing or Google API). You system should pass an input text of at least 100 words through 10 to 25 languages and provide the output for a comparison. The input text and language successions should be given from the user as input, with the possibility to use some default settings.
+
+## Approach
 
 This implementation uses the [NLP Cloud Translation API](https://nlpcloud.com/nlp-translation-deep-learning-api.html) and uses the following languge codes:
 
@@ -210,3 +214,21 @@ This implementation uses the [NLP Cloud Translation API](https://nlpcloud.com/nl
 | Chinese (Traditional)              | zho_Hant |
 | Standard Malay                     | zsm_Latn |
 | Zulu                               | zul_Latn |
+
+## Commentary
+
+From testing with different input, it seems plain, normal text generates the least confusion. Normal text here meaning news or article sections that do not use informal speech or metaphors, as such, the meaning of the words can be somewhat maintained across the language passes.
+
+Joke texts are ones that quickly lose their meaning as soon as they are passed through 1 or 2 languages since they employ metaphors or play-on-words or sarcasm to deliver their purpose. Once translated word-by-word, even if the independent words themselves may be correct, the meaning of the whole text is lost. The same can be observed for poetry as well. Having used this example of short poem:
+
+> I’m a riddle in nine syllables,
+> An elephant, a ponderous house,
+> A melon strolling on two tendrils.
+> O red fruit, ivory, fine timbers!
+> This loaf’s big with its yeasty rising.
+> Money’s new-minted in this fat purse.
+> I’m a means, a stage, a cow in calf.
+> I’ve eaten a bag of green apples,
+> Boarded the train there’s no getting off.
+
+This may be a quirk of the API that was used, but after passing through several language of varying origin (latin, cyrilic, arab etc) parts of the original sentence are missing when returning to english. Also some capitalisations are lost, but that is to be expected when parsing the text in-between.
